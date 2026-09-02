@@ -417,6 +417,17 @@
 </head>
 <body>
 
+    <!-- Password Gate -->
+    <div id="pw-gate" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;max-width:360px;padding:24px;">
+            <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Wise Research</h2>
+            <p style="color:#666;font-size:0.95rem;margin-bottom:24px;">Enter the password to continue.</p>
+            <input id="pw-input" type="password" placeholder="Password" style="width:100%;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px;" autofocus>
+            <button id="pw-submit" style="width:100%;padding:12px;border:none;border-radius:8px;background:#111;color:#fff;font-size:0.95rem;font-weight:600;cursor:pointer;">Enter</button>
+            <p id="pw-error" style="color:#e53935;font-size:0.85rem;margin-top:12px;display:none;">Incorrect password. Try again.</p>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="site-header">
         <div class="header-brand">Wise Research</div>
@@ -482,7 +493,7 @@
     <section class="tools" id="tools">
         <div class="tools-header">
             <h2 class="reveal">Plug these tools into any AI.</h2>
-            <p class="section-subtitle reveal">Drop these two bespoke research tools directly into whichever tool you already use — whether that's Claude, ChatGPT, Gemini, or AskRovo.</p>
+            <p class="section-subtitle reveal">Mitigate bias directly in whichever AI tool you already use.</p>
             <div class="tool-logos reveal">
                 <div class="tool-logo">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -548,11 +559,33 @@
 
     <!-- Final CTA -->
     <section style="padding: 80px 48px; text-align: center; background: #f7f7f7;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 24px;">Ready to try our bespoke AI research tools?</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 24px;">Ready to start querying research with confidence?</h2>
         <a href="try-tools.html" class="btn btn-primary">Download tools now</a>
     </section>
 
     <script>
+        // Password gate
+        const gate = document.getElementById('pw-gate');
+        const pwInput = document.getElementById('pw-input');
+        const pwSubmit = document.getElementById('pw-submit');
+        const pwError = document.getElementById('pw-error');
+
+        function checkPassword() {
+            if (pwInput.value === 'luckycat') {
+                gate.style.display = 'none';
+                sessionStorage.setItem('pw-ok', '1');
+            } else {
+                pwError.style.display = 'block';
+                pwInput.value = '';
+                pwInput.focus();
+            }
+        }
+
+        pwSubmit.addEventListener('click', checkPassword);
+        pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+
+        if (sessionStorage.getItem('pw-ok') === '1') gate.style.display = 'none';
+
         // Tab switching
         document.querySelectorAll('.skill-tab').forEach(tab => {
             tab.addEventListener('click', () => {
