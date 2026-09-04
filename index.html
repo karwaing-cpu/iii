@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change the way you research</title>
+    <title>See the whole story behind the data — Wise Research</title>
     <style>
         * {
             margin: 0;
@@ -11,12 +11,15 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: #222;
             line-height: 1.6;
             background: #fff;
-            scroll-behavior: smooth;
         }
 
         /* Header */
@@ -65,7 +68,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 140px 48px 140px;
+            padding: 140px 48px 100px;
             background: linear-gradient(-45deg, #f7f7f7, #e8f0fe, #fce4ec, #e8f5e9, #fff3e0);
             background-size: 400% 400%;
             animation: gradientShift 20s ease infinite;
@@ -97,11 +100,6 @@
             margin-bottom: 12px;
         }
 
-        .hero .tagline {
-            font-size: 1.1rem;
-            color: #777;
-            margin-bottom: 40px;
-        }
 
         .btn {
             display: inline-block;
@@ -283,28 +281,6 @@
             background: #f5f3eb;
         }
 
-        .skill-visual .visual-placeholder {
-            width: 100%;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 12px;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .skill-visual .visual-placeholder .placeholder-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(0,0,0,0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
 
         /* Our approach */
         .approach {
@@ -355,6 +331,15 @@
             font-size: 0.8rem;
             color: #888;
             margin-top: 4px;
+        }
+
+        /* Expandable section */
+        details[open] summary .expand-icon {
+            transform: rotate(45deg);
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
         }
 
         /* Scroll animations */
@@ -440,10 +425,9 @@
 
     <!-- Hero -->
     <section class="hero">
-        <h1>Query research without bias.</h1>
-        <p class="supporting" style="font-weight:600;font-size:1.3rem;color:#333;margin-bottom:16px;">AI gives you confident answers, even when it's wrong. We give you the full picture.</p>
-        <p class="supporting" style="max-width:580px;">Use our new bias mitigating tools designed to surface assumptions, alternatives, and blind spots in our research repository to help you make clear, data-driven decisions.</p>
-        <p class="tagline">Built and tested by the Wise Research Team.</p>
+        <span style="display:inline-block;align-self:flex-start;font-size:0.7rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#555;background:rgba(0,0,0,0.06);padding:6px 12px;border-radius:20px;margin-bottom:20px;line-height:1;">Built by Wise Research</span>
+        <h1>See the whole story behind the data.</h1>
+        <p class="supporting" style="max-width:580px;margin-bottom:40px;">AI gives confident answers, even when it's wrong. Surface hidden assumptions, alternatives, and blind spots to make truly data-driven decisions.</p>
         <a href="#tools" class="btn btn-primary" style="align-self: flex-start;">Learn more</a>
     </section>
 
@@ -493,8 +477,9 @@
     <!-- Tools — Maze-style tabs -->
     <section class="tools" id="tools">
         <div class="tools-header">
-            <h2 class="reveal">Plug these tools into any AI.</h2>
-            <p class="section-subtitle reveal">Mitigate bias directly in whichever AI tool you already use.</p>
+            <h2 class="reveal">A smarter workspace to query research.</h2>
+            <p class="section-subtitle reveal" style="margin-bottom:4px;">Don't just chat with data. Use our purpose-built tools to visualize the complete problem space and document decisions.</p>
+            <p class="section-subtitle reveal" style="margin-bottom:32px;">Compatible with your preferred AI.</p>
             <div class="tool-logos reveal">
                 <div class="tool-logo">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -537,32 +522,67 @@
             <div class="skill-panel active" data-panel="dashboard">
                 <div class="skill-info">
                     <h3>Research Problem Space Dashboard</h3>
-                    <p><strong>Going beyond conversational AI.</strong> A curated, digestible and trusted view of customer problems — with confidence levelling, contradiction flags, open questions, and sources cited.</p>
-                    <span class="skill-link" style="cursor:default;">Explore the tool →</span>
+                    <p><strong>Map the entire problem space.</strong> Get a structured, 360-degree view of your customer problems — complete with visual confidence meters, contradiction flags, and explicitly cited sources to guide your discovery.</p>
+                    <span class="skill-link" style="cursor:default;color:#999;">Coming soon</span>
                 </div>
                 <div class="skill-visual dashboard-bg">
-                    <img src="dashboard.gif" alt="Research Problem Space Dashboard prototype walkthrough" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                    <img src="dashboard.gif" alt="Research Problem Space Dashboard prototype walkthrough" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                 </div>
             </div>
 
             <div class="skill-panel" data-panel="receipt">
                 <div class="skill-info">
                     <h3>Decision Receipt</h3>
-                    <p><strong>Make data-driven decisions with confidence.</strong> Before committing, get a transparent breakdown of the evidence, challenges, gaps, and alternatives behind each decision.</p>
+                    <p><strong>Build shared confidence in every decision.</strong> Create an audit trail of supporting evidence, hidden gaps, and challenges so your team can move forward with absolute confidence.</p>
                     <a href="https://saranya-satheesh.github.io/iii/" target="_blank" class="skill-link">Explore the tool →</a>
                 </div>
                 <div class="skill-visual receipt-bg">
-                    <img src="receipt.gif" alt="Decision Receipt prototype walkthrough" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                    <img src="receipt.gif" alt="Decision Receipt prototype walkthrough" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
                 </div>
             </div>
         </div>
+
+        <!-- Expandable: How the integration works -->
+        <details class="integration-details reveal" style="max-width:720px;margin:48px auto 0;text-align:left;background:#f7f7f7;border-radius:12px;overflow:hidden;">
+            <summary style="font-size:1rem;font-weight:600;color:#222;cursor:pointer;padding:20px 24px;list-style:none;display:flex;align-items:center;justify-content:space-between;">
+                <span>How the integration works</span>
+                <span class="expand-icon" style="font-size:1.2rem;transition:transform 0.2s ease;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#e8e8e8;border-radius:50%;">+</span>
+            </summary>
+            <div style="padding:0 24px 24px;color:#555;font-size:0.95rem;line-height:1.7;">
+                <div style="display:flex;gap:16px;margin-bottom:16px;">
+                    <div style="flex:1;background:#fff;border-radius:8px;padding:16px;text-align:center;">
+                        <div style="font-size:1.2rem;margin-bottom:4px;">📂</div>
+                        <div style="font-weight:600;font-size:0.85rem;color:#222;margin-bottom:4px;">Research repository</div>
+                        <div style="font-size:0.8rem;color:#888;">Curates & structures raw data</div>
+                    </div>
+                    <div style="flex:0;display:flex;align-items:center;color:#ccc;font-size:1.2rem;">→</div>
+                    <div style="flex:1;background:#fff;border-radius:8px;padding:16px;text-align:center;">
+                        <div style="font-size:1.2rem;margin-bottom:4px;">🤖</div>
+                        <div style="font-weight:600;font-size:0.85rem;color:#222;margin-bottom:4px;">Your preferred AI</div>
+                        <div style="font-size:0.8rem;color:#888;">Queries & synthesizes</div>
+                    </div>
+                    <div style="flex:0;display:flex;align-items:center;color:#ccc;font-size:1.2rem;">→</div>
+                    <div style="flex:1;background:#fff;border-radius:8px;padding:16px;text-align:center;">
+                        <div style="font-size:1.2rem;margin-bottom:4px;">✨</div>
+                        <div style="font-weight:600;font-size:0.85rem;color:#222;margin-bottom:4px;">Workspace</div>
+                        <div style="font-size:0.8rem;color:#888;">Clear, visual insights</div>
+                    </div>
+                </div>
+                <p style="margin:0;font-size:0.9rem;">Our research repository curates and structures the raw data. Your preferred AI (Gemini, Claude, etc.) helps you query and synthesize it. The workspace takes that combined output and presents it as clear, visual insights — so you can make confident decisions without second-guessing the source.</p>
+            </div>
+        </details>
     </section>
 
     <!-- Final CTA -->
-    <section style="padding: 80px 48px; text-align: center; background: #f7f7f7;">
+    <section style="padding: 80px 48px; text-align: center; background: #f0f0f0; border-top: 1px solid #e4e4e4;">
         <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 24px;">Ready to start querying research with confidence?</h2>
         <a href="try-tools.html" class="btn btn-primary">Download tools now</a>
     </section>
+
+    <!-- Footer -->
+    <footer style="padding: 24px 48px; text-align: center; font-size: 0.8rem; color: #999;">
+        Wise Research &middot; 2026
+    </footer>
 
     <script>
         // Password gate
